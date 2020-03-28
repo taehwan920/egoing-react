@@ -1,49 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
+import Content from './components/Content';
+import Subject from './components/Subject';
+import TOC from './components/TOC';
 
-class Subject extends Component {
-  render() {
-    return (
-      <header>
-        <h1>WEB</h1>
-        World Wide Web!
-      </header>
-    );
-  }
-}
-
-class TOC extends Component {
-  render() {
-    return (
-      <nav>
-        <ul>
-          <li>HTML</li>
-          <li>CSS</li>
-          <li>JavaScript</li>
-        </ul>
-      </nav>
-    );
-  }
-}
-
-class Content extends Component {
-  render() {
-    return (
-      <article>
-        <h2>HTML</h2>
-        HTML is HyperText Markup Language.
-      </article>
-    );
-  }
-}
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Subject></Subject>
+        <Subject title="WEB" sub="world wide web!"></Subject>
         <TOC></TOC>
-        <Content></Content>
+        <Content title="HTML" desc="HTML is HyperText Markup Language."></Content>
       </div>
     );
   };
