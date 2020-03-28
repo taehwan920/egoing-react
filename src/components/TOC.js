@@ -2,12 +2,17 @@ import React, { Component } from 'react';
 
 class TOC extends Component {
     render() {
+        let lists = [];
+        let data = this.props.data
+        let i = 0;
+        while (i < data.length) {
+            lists.push(<li key={data[i].id}>{data[i].title}</li>);
+            i++
+        }
         return (
             <nav>
                 <ul>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>JavaScript</li>
+                    {lists}
                 </ul>
             </nav>
         );
