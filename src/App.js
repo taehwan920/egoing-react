@@ -54,14 +54,22 @@ class App extends Component {
       }.bind(this)}></CreateContent>
     } else if (this.state.mode === 'update') {
       let _content = this.getReadContent();
-      _article = <UpdateContent data={_content} onSubmit={function (_title, _desc) {
-        this.max_content_id++;
-        const newContent = { id: this.max_content_id, title: _title, desc: _desc };
-        const addNewContent = this.state.contents.concat(newContent);
-        this.setState({
-          contents: addNewContent
-        });
-      }.bind(this)}></UpdateContent>
+      _article = <UpdateContent data={_content} onSubmit={
+        function (_id, _title, _desc) {
+          const _contents = Array.from(this.state.contents);
+          let i = 0;
+          while (i < _contents.length) {
+            if (_contents[i].id === _id) {
+              _contents[i] = { id: _id, title: _title, desc: _desc }
+              break;
+            }
+            i++
+          }
+          this.setState({
+            contents: _contents,
+            mode: 'read'
+          });
+        }.bind(this)}></UpdateContent>
     };
     return _article;
   };
@@ -91,7 +99,7 @@ class App extends Component {
             mode: _mode
           });
         }.bind(this)}></Control>
-        {this.getContent()};
+        {this.getContent()}
       </div >
     );
   };
